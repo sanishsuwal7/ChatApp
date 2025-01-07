@@ -51,7 +51,8 @@ const ChatContainer = () => {
                 {formatMessageTime(message.createdAt)}
               </time>
             </div>
-            <div className="chat-bubble flex flex-col">
+            {/* <div className="chat-bubble flex flex-col bg-primary text-primary-content"> */}
+            <div className= {`chat-bubble flex flex-col ${message.senderId === authUser._id ? "bg-primary text-primary-content" : "bg-base-200"}`}>
               {message.image && (
                 <img
                   src={message.image}
@@ -59,7 +60,7 @@ const ChatContainer = () => {
                   className="sm:max-w-[200px] rounded-md mb-2"
                 />
               )}
-              {message.text && <p>{message.text}</p>}
+              {message.text && <p className={`${message.senderId === authUser._id ? "text-primary-content/70" : "text-base-content/70"}`}>{message.text}</p>}
             </div>
           </div>
         ))}
